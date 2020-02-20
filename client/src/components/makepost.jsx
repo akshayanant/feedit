@@ -23,13 +23,23 @@ class MakePost extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Say Something :
-          <textarea value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Post" />
-      </form>
+      <div className=" border justify-content-around border-light rounded-sm bg-light">
+        <form
+          onSubmit={this.handleSubmit}
+          className="d-flex align-items-center"
+        >
+          <textarea
+            rows="5"
+            cols="60"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="Say Something!"
+            className="border-bottom rounded border-warning bg-light"
+          />
+
+          <input type="submit" value="Post" className="btn btn-dark" />
+        </form>
+      </div>
     );
   }
 }

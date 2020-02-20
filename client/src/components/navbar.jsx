@@ -6,8 +6,14 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <nav>
-          <button onClick={this.props.refresh}>Refresh</button>
+        <nav className="navbar navbar-dark bg-dark">
+          <span className="navbar-brand">FeedIt</span>
+          <button
+            className="btn btn-outline-warning"
+            onClick={this.props.refresh}
+          >
+            Refresh
+          </button>
         </nav>
       </div>
     );

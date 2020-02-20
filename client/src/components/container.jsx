@@ -7,8 +7,8 @@ class Container extends Component {
   render() {
     return (
       <div>
-        <MakePost />
         <NavBar />
+        <MakePost />
         <FeedPost />
       </div>
     );
