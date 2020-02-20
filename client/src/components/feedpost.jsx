@@ -9,7 +9,7 @@ class FeedPost extends Component {
           return (
             <div>
               <h3>{post.ownerID}</h3>
-              <h3>{post.timestamp}</h3>
+              <p>{post.timestamp}</p>
               <p>{post.post}</p>
             </div>
           );

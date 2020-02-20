@@ -1,11 +1,11 @@
 import {
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_REQUEST
+  FETCH_POSTS_REQUEST,
+  MAKE_POST
 } from "./../actions/actiontypes";
 
 const initialState = {
   posts: [],
-  myPost: "",
   loading: false,
   posting: false
 };
@@ -24,6 +24,12 @@ export const dataReducer = (state = initialState, action) => {
         ...state,
         posts: action.payload,
         loading: false
+      };
+
+    case MAKE_POST:
+      return {
+        ...state,
+        posts: action.payload
       };
 
     default:

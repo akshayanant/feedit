@@ -15,4 +15,8 @@ public abstract class BaseFeedPost {
     @Column(updatable = false)
     @UpdateTimestamp
     private LocalDateTime timestamp;
+
+    public LocalDateTime getTimestamp(){
+        return timestamp;
+    }
 }
