@@ -2,4 +2,10 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { rootReducer } from "./dataitems/reducers/rootReducer";
 import thunk from "redux-thunk";
 
-export const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+export const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk)
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);

@@ -1,13 +1,28 @@
 import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_REQUEST,
-  MAKE_POST
+  MAKE_POST,
+  AUTH_USER,
+  USER_LOGOUT
 } from "./actiontypes";
 import {
   SERVER_URL,
   FETCH_URL_EXT,
   MAKE_POST_EXT
 } from "./../../utils/constants";
+
+export const authUser = user => {
+  return {
+    type: AUTH_USER,
+    payload: user
+  };
+};
+
+export const userLogout = () => {
+  return {
+    type: USER_LOGOUT
+  };
+};
 
 const fetchPostsSuccess = data => {
   return {

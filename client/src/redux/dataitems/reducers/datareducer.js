@@ -1,10 +1,13 @@
 import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_REQUEST,
-  MAKE_POST
+  MAKE_POST,
+  AUTH_USER,
+  USER_LOGOUT
 } from "./../actions/actiontypes";
 
 const initialState = {
+  user: null,
   posts: [],
   loading: false,
   posting: false
@@ -13,6 +16,18 @@ const initialState = {
 export const dataReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case AUTH_USER:
+      return {
+        ...state,
+        user: action.payload
+      };
+
+    case USER_LOGOUT:
+      return {
+        ...state,
+        user: null
+      };
+
     case FETCH_POSTS_REQUEST:
       return {
         ...state,
