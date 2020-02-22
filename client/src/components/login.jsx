@@ -59,7 +59,7 @@ class Login extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Email</Label>
+          <Label>Password</Label>
           <Input
             type="password"
             placeholder="Password"
@@ -74,7 +74,7 @@ class Login extends Component {
         </Button>
         <Label className="pt-5">Not a Member yet?</Label>
         <FormGroup>
-          <Label>Password</Label>
+          <Label>Email</Label>
           <Input
             type="email"
             placeholder="Email"

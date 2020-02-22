@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { makePost } from "./../redux/dataitems/actions/actions";
+import { FormGroup, Form, Input, Button } from "reactstrap";
 
 class MakePost extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class MakePost extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(event) {
@@ -21,25 +23,37 @@ class MakePost extends Component {
     event.preventDefault();
   }
 
+  handleCancel(event) {
+    this.setState({ value: "" });
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <div className=" border justify-content-around border-light rounded-sm bg-light">
-        <form
-          onSubmit={this.handleSubmit}
-          className="d-flex align-items-center"
-        >
-          <textarea
-            rows="5"
-            cols="60"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="Say Something!"
-            className="border-bottom rounded border-warning bg-light"
-          />
-
-          <input type="submit" value="Post" className="btn btn-dark" />
-        </form>
-      </div>
+      <Form className="make-post-form">
+        <Input
+          type="textarea"
+          id="exampletext"
+          size="lg"
+          bgsize="lg"
+          rows="5"
+          value={this.state.value}
+          onChange={this.handleChange}
+          placeholder="Say Something!"
+        />
+        <div className="post-buttons">
+          <div>
+            <Button color="secondary" onClick={this.handleCancel}>
+              Cancel
+            </Button>
+          </div>
+          <div>
+            <Button color="success" onClick={this.handleSubmit}>
+              Post
+            </Button>
+          </div>
+        </div>
+      </Form>
     );
   }
 }

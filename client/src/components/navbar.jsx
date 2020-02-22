@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchPosts } from "./../redux/dataitems/actions/actions";
 import fire from "./../config/firebaseconfig";
+import { Navbar, Button } from "reactstrap";
 
 class NavBar extends Component {
   constructor(props) {
@@ -17,18 +18,15 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark bg-dark">
-          <button
-            className="btn btn-outline-warning"
-            onClick={this.props.refresh}
-          >
+        <Navbar color="success">
+          <Button className="btn btn-success" onClick={this.props.refresh}>
             FeedIt
-          </button>
+          </Button>
 
-          <button className="btn btn-outline-danger" onClick={this.logout}>
+          <Button className="btn btn-danger" onClick={this.logout}>
             Log Out
-          </button>
-        </nav>
+          </Button>
+        </Navbar>
       </div>
     );
   }

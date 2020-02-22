@@ -8,10 +8,10 @@ class FeedPost extends Component {
   }
   render() {
     return (
-      <div className="border border-light rounded-sm bg-light">
+      <div className="feed-post-container">
         {this.props.posts.map(post => {
           return (
-            <div className="border border-dark rounded-sm bg-light">
+            <div className="feed-post">
               <h3>{post.ownerID}</h3>
               <p>{post.timestamp}</p>
               <p>{post.post}</p>
