@@ -26,5 +26,5 @@ public class FeedPost extends BaseFeedPost {
     @GeneratedValue
     private int postID;
     private String post;
-    private int ownerID;
+    private String ownerID;
 }

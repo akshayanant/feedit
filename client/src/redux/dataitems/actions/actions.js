@@ -36,7 +36,6 @@ export const fetchPosts = () => {
     dispatch(fetchPostRequest());
     fetch(SERVER_URL + FETCH_URL_EXT)
       .then(res => {
-        console.log(res);
         return res.json();
       })
       .then(data => dispatch(fetchPostsSuccess(data)));
@@ -49,21 +48,20 @@ const fetchPostRequest = () => {
   };
 };
 
-export const makePost = post => {
+export const makePost = (email, post) => {
   return dispatch => {
     fetch(SERVER_URL + MAKE_POST_EXT, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         post: post,
-        ownerID: 1
+        ownerID: email
       })
     })
       .then(response => {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         dispatch({
           type: MAKE_POST,
           payload: data

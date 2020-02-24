@@ -18,7 +18,7 @@ class MakePost extends Component {
   }
 
   handleSubmit(event) {
-    this.props.submit(this.state.value);
+    this.props.submit(this.props.user, this.state.value);
     this.setState({ value: "" });
     event.preventDefault();
   }
@@ -60,8 +60,14 @@ class MakePost extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    submit: post => dispatch(makePost(post))
+    submit: (email, post) => dispatch(makePost(email, post))
   };
 };
 
-export default connect(null, mapDispatchToProps)(MakePost);
+const mapStateToProps = state => {
+  return {
+    user: state.data.user
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MakePost);

@@ -14,7 +14,6 @@ const initialState = {
 };
 
 export const dataReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case AUTH_USER:
       return {
