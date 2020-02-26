@@ -3,6 +3,7 @@ package com.heiseneberg.feedit.service;
 import com.heiseneberg.feedit.dao.FeedsRepository;
 import com.heiseneberg.feedit.models.BaseFeedPost;
 import com.heiseneberg.feedit.models.FeedPost;
+import com.heiseneberg.feedit.models.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,8 @@ public class FeedService {
     @Autowired
     private FeedsRepository feedsRepository;
 
-    public List<FeedPost> makePost(FeedPost feedPost){
+    public void makePost(FeedPost feedPost){
         feedsRepository.save(feedPost);
-        return getPosts();
     }
 
     public List<FeedPost> getPosts(){

@@ -5,6 +5,7 @@ package com.heiseneberg.feedit.resources;
  */
 public interface Store{
     public static final String HOME_EXT = "/feedit/home";
+    public static final String CREATE_UESR_EXT = "/createuser";
 
 
 }

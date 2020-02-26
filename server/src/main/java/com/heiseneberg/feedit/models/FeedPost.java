@@ -27,4 +27,12 @@ public class FeedPost extends BaseFeedPost {
     private int postID;
     private String post;
     private String ownerID;
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public String getPost() {
+        return post;
+    }
 }

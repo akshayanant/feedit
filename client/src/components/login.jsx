@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 import fire from "./../config/firebaseconfig";
+import { SERVER_URL, CREATE_USER_EXT } from "./../redux/utils/constants";
 
 class Login extends Component {
   constructor(props) {
@@ -8,6 +9,8 @@ class Login extends Component {
     this.state = {
       loginEmail: "",
       loginPassword: "",
+      newFirstName: "",
+      newLastName: "",
       newEmail: "",
       newPassword: ""
     };
@@ -17,6 +20,8 @@ class Login extends Component {
     this.handleChangeNewPassword = this.handleChangeNewPassword.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleNewAcc = this.handleNewAcc.bind(this);
+    this.handleChangeNewFirstName = this.handleChangeNewFirstName.bind(this);
+    this.handleChangeNewLastName = this.handleChangeNewLastName.bind(this);
   }
 
   handleChangeLoginEmail = event => {
@@ -24,6 +29,12 @@ class Login extends Component {
   };
   handleChangeLoginPassword = event => {
     this.setState({ loginPassword: event.target.value });
+  };
+  handleChangeNewFirstName = event => {
+    this.setState({ newFirstName: event.target.value });
+  };
+  handleChangeNewLastName = event => {
+    this.setState({ newLastName: event.target.value });
   };
   handleChangeNewEmail = event => {
     this.setState({ newEmail: event.target.value });
@@ -41,9 +52,25 @@ class Login extends Component {
   handleNewAcc = () => {
     const email = this.state.newEmail;
     const password = this.state.newPassword;
+    const firstName = this.state.newFirstName;
+    const lastName = this.state.newLastName;
     console.log(email);
     console.log(password);
-    fire.auth().createUserWithEmailAndPassword(email, password);
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(
+        fetch(SERVER_URL + CREATE_USER_EXT, {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            firstName: firstName,
+            lastName: lastName
+          })
+        })
+      );
+    console.log(firstName, lastName, email);
   };
 
   render() {
@@ -58,6 +85,7 @@ class Login extends Component {
             onChange={this.handleChangeLoginEmail}
           />
         </FormGroup>
+
         <FormGroup>
           <Label>Password</Label>
           <Input
@@ -73,6 +101,23 @@ class Login extends Component {
           Login
         </Button>
         <Label className="pt-5">Not a Member yet?</Label>
+        <Label className="pb-3">Sign up with your details!</Label>
+
+        <FormGroup>
+          <Label>First Name</Label>
+          <Input
+            placeholder="First Name"
+            onChange={this.handleChangeNewFirstName}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Last Name</Label>
+          <Input
+            placeholder="Last Name"
+            onChange={this.handleChangeNewLastName}
+          />
+        </FormGroup>
+
         <FormGroup>
           <Label>Email</Label>
           <Input

@@ -3,7 +3,8 @@ import {
   FETCH_POSTS_REQUEST,
   MAKE_POST,
   AUTH_USER,
-  USER_LOGOUT
+  USER_LOGOUT,
+  CREATE_USER
 } from "./actiontypes";
 import {
   SERVER_URL,

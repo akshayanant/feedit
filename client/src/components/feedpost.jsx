@@ -12,8 +12,14 @@ class FeedPost extends Component {
         {this.props.posts.map(post => {
           return (
             <div className="feed-post">
-              <h3>{post.ownerID}</h3>
-              <p>{post.timestamp}</p>
+              <h4>{post.fullName}</h4>
+              <p>
+                {post.time.dayOfMonth +
+                  " " +
+                  post.time.month +
+                  " " +
+                  post.time.year}
+              </p>
               <p>{post.post}</p>
             </div>
           );
